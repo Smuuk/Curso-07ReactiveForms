@@ -1,0 +1,111 @@
+<h2>Reactivos: Básicos</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <form autocomplete="off" [formGroup]="myFormBuild" (ngSubmit)="onSave()">
+
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Nombre del producto"
+                           formControlName="name">
+                    <!-- Esta es una forma de poner las validaciones pero es tediosa ya que se debe poner UNO POR UNO -->
+
+                    <!-- <span *ngIf="myFormBuild.controls['name'].getError('required') && myFormBuild.controls['name'].touched" class="form-text text-danger">
+                        Este campo es requerido
+                    </span>
+                    <span *ngIf="myFormBuild.controls['name'].getError('minlength')" class="form-text text-danger">
+                        Debe de ser minimo de 3 letras
+                    </span> -->
+
+                    <!-- Esta es otra forma, la cual ya seria minimizando el codigo y paoyandose mas con el TS -->
+
+                    <span *ngIf="isValidField('name')"  class="form-text text-danger">
+                        {{getFieldError('name')}}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                           class="form-control"
+                           placeholder="Precio del producto"
+                           formControlName="price">
+                    <span class="form-text text-danger">
+                        El precio debe de ser 0 o mayor
+                    </span>
+                </div>
+            </div>
+
+            <!-- Campo de existencias -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Existencias</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                           class="form-control"
+                           placeholder="Existencias del producto"
+                           formControlName="inStorage">
+
+                    <span class="form-text text-danger">
+                         Las existencias deben de ser 0 o mayor
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end" >
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col">
+
+        <span>Valid</span>
+        <pre>{{ myFormBuild.valid | json }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ myFormBuild.pristine | json }}</pre>
+
+        <span>Touched</span>
+        <pre>{{ myFormBuild.touched | json }}</pre>
+
+        <span>Value</span>
+        <pre>{{ myFormBuild.value | json }}</pre>
+
+        <span>Precio Value</span>
+        <pre>{{ myFormBuild.controls['price'].value | json }}</pre>
+
+        <span>Precio - Errors</span>
+        <pre>{{ myFormBuild.controls['price'].errors | json }}</pre>
+
+        <span>Producto Value</span>
+        <pre>{{ myFormBuild.controls['name'].value | json }}</pre>
+
+        <span>Producto Errors</span>
+        <pre>{{ myFormBuild.controls['name'].errors | json }}</pre>
+    </div>
+</div>
