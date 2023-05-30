@@ -51,6 +51,8 @@ export class BasicPageComponent implements OnInit {
           return 'Este campo es requerido';
         case 'minlength':
           return `Mínimo ${errors['minlength'].requiredLength} caracters.`;
+        case 'min':
+          return 'El precio debe de ser 0 o mayor';
       }
     }
     return null;

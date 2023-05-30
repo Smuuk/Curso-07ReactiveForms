@@ -11,10 +11,7 @@
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
 
-                    <input type="text"
-                           class="form-control"
-                           placeholder="Nombre del producto"
-                           formControlName="name">
+                    <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="name">
                     <!-- Esta es una forma de poner las validaciones pero es tediosa ya que se debe poner UNO POR UNO -->
 
                     <!-- <span *ngIf="myFormBuild.controls['name'].getError('required') && myFormBuild.controls['name'].touched" class="form-text text-danger">
@@ -26,7 +23,7 @@
 
                     <!-- Esta es otra forma, la cual ya seria minimizando el codigo y paoyandose mas con el TS -->
 
-                    <span *ngIf="isValidField('name')"  class="form-text text-danger">
+                    <span *ngIf="isValidField('name')" class="form-text text-danger">
                         {{getFieldError('name')}}
                     </span>
                 </div>
@@ -36,12 +33,14 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
-                    <input type="number"
-                           class="form-control"
-                           placeholder="Precio del producto"
-                           formControlName="price">
-                    <span class="form-text text-danger">
+                    <input type="number" class="form-control" placeholder="Precio del producto" formControlName="price">
+                    <!-- METODO UNO -->
+                    <!-- <span class="form-text text-danger">
                         El precio debe de ser 0 o mayor
+                    </span> -->
+                    <!-- METODO DOS -->
+                    <span *ngIf="isValidField('price')" class="form-text text-danger">
+                        {{getFieldError('price')}}
                     </span>
                 </div>
             </div>
@@ -50,13 +49,15 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
-                    <input type="number"
-                           class="form-control"
-                           placeholder="Existencias del producto"
-                           formControlName="inStorage">
-
-                    <span class="form-text text-danger">
+                    <input type="number" class="form-control" placeholder="Existencias del producto"
+                        formControlName="inStorage">
+                    <!-- METODO UNO -->
+                    <!-- <span class="form-text text-danger">
                          Las existencias deben de ser 0 o mayor
+                    </span> -->
+                    <!-- METODO DOS -->
+                    <span *ngIf="isValidField('inStorage')" class="form-text text-danger">
+                        {{getFieldError('inStorage')}}
                     </span>
                 </div>
             </div>
@@ -64,8 +65,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit"
-                            class="btn btn-primary float-end" >
+                    <button type="submit" class="btn btn-primary float-end">
                         Guardar
                     </button>
                 </div>
